@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="honeypot," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="MHN 学习笔记[TOC]
+一、蜜罐概述１．低交互式：低交互式模拟常规的服务，服务存在漏洞，但是模拟的这些漏洞无法被利用，开发和维护这种类型的蜜罐比较容易。
+２．高交互式：高交互式使用的是真实的服务，有助于发现服务存在的新漏洞，同时能够记录所有的攻击，但是，部署困难、维护成本高，一旦服务上存在的漏洞被利用，容易引发新的安全问题。
+MHN 是一个开源蜜罐，它简化了蜜罐的部署，同时便于收集和统计蜜罐的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MHN 学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/08/30/MHN_学习笔记/index.html">
+<meta property="og:site_name" content="Hi，Hacker">
+<meta property="og:description" content="MHN 学习笔记[TOC]
+一、蜜罐概述１．低交互式：低交互式模拟常规的服务，服务存在漏洞，但是模拟的这些漏洞无法被利用，开发和维护这种类型的蜜罐比较容易。
+２．高交互式：高交互式使用的是真实的服务，有助于发现服务存在的新漏洞，同时能够记录所有的攻击，但是，部署困难、维护成本高，一旦服务上存在的漏洞被利用，容易引发新的安全问题。
+MHN 是一个开源蜜罐，它简化了蜜罐的部署，同时便于收集和统计蜜罐的">
+<meta property="og:image" content="http://oc1v0t69e.bkt.clouddn.com/mhn_%E6%9E%B6%E6%9E%84.jpg">
+<meta property="og:image" content="http://oc1v0t69e.bkt.clouddn.com/%E9%80%89%E5%8C%BA_006.png">
+<meta property="og:image" content="http://oc1v0t69e.bkt.clouddn.com/dionaea_port.png">
+<meta property="og:image" content="http://oc1v0t69e.bkt.clouddn.com/dionaea_service.png">
+<meta property="og:image" content="http://oc1v0t69e.bkt.clouddn.com/dionaea_nmap.png">
+<meta property="og:updated_time" content="2017-08-30T03:54:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MHN 学习笔记">
+<meta name="twitter:description" content="MHN 学习笔记[TOC]
+一、蜜罐概述１．低交互式：低交互式模拟常规的服务，服务存在漏洞，但是模拟的这些漏洞无法被利用，开发和维护这种类型的蜜罐比较容易。
+２．高交互式：高交互式使用的是真实的服务，有助于发现服务存在的新漏洞，同时能够记录所有的攻击，但是，部署困难、维护成本高，一旦服务上存在的漏洞被利用，容易引发新的安全问题。
+MHN 是一个开源蜜罐，它简化了蜜罐的部署，同时便于收集和统计蜜罐的">
+<meta name="twitter:image" content="http://oc1v0t69e.bkt.clouddn.com/mhn_%E6%9E%B6%E6%9E%84.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/30/MHN_学习笔记/"/>
+
+
+
+
+
+  <title>MHN 学习笔记 | Hi，Hacker</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5a93fb0e0913f4b24ee8574c46dd0af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hi，Hacker</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/30/MHN_学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="virusec00">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oc1v0t69e.bkt.clouddn.com/kk.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi，Hacker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MHN 学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T11:54:08+08:00">
+                2017-08-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/安全杂项/" itemprop="url" rel="index">
+                    <span itemprop="name">安全杂项</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长"> 分钟
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="MHN-学习笔记"><a href="#MHN-学习笔记" class="headerlink" title="MHN 学习笔记"></a>MHN 学习笔记</h1><p>[TOC]</p>
+<h2 id="一、蜜罐概述"><a href="#一、蜜罐概述" class="headerlink" title="一、蜜罐概述"></a>一、蜜罐概述</h2><p>１．低交互式：低交互式模拟常规的服务，服务存在漏洞，但是模拟的这些漏洞无法被利用，开发和维护这种类型的蜜罐比较容易。</p>
+<p>２．高交互式：高交互式使用的是真实的服务，有助于发现服务存在的新漏洞，同时能够记录所有的攻击，但是，部署困难、维护成本高，一旦服务上存在的漏洞被利用，容易引发新的安全问题。</p>
+<p>MHN 是一个开源蜜罐，它简化了蜜罐的部署，同时便于收集和统计蜜罐的数据。用 <a href="http://threatstream.github.io/mhn/" target="_blank" rel="external">ThreatStream</a> 来部署，整理后保存在 Mongodb 中，它安装了入侵检测软件的部署传感器：Snort，Kippo，Conpot和 Dionaea，收集到的信息也可以通过 web 接口来展示或者通过开发的 API 访问。架构图如下：<br><img src="http://oc1v0t69e.bkt.clouddn.com/mhn_%E6%9E%B6%E6%9E%84.jpg" alt="two" title="mhn_net"><br><a id="more"></a></p>
+<h2 id="二、MHN-安装"><a href="#二、MHN-安装" class="headerlink" title="二、MHN 安装"></a>二、MHN 安装</h2><ol>
+<li>设备 Ububtu 14.04，项目地址 <a href="https://github.com/threatstream/mhn" target="_blank" rel="external">Github</a></li>
+<li><p>git repository</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update &amp;&amp; sudo apt-get upgrade</div><div class="line">sudo apt-get install git</div><div class="line">cd /opt</div><div class="line">sudo git clone https://github.com/threatstream/mhn</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装形式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">##老版本单个</div><div class="line">cd /opt/mhn/scripts</div><div class="line">sudo ./install_hpfeeds.sh</div><div class="line">sudo ./install_mnemosyne.sh</div><div class="line">sudo ./install_honeymap.sh</div><div class="line">sudo ./install_mhnserver.sh</div><div class="line">##目前一键安装</div><div class="line">cd /opt/mhn/</div><div class="line">sudo ./install.sh</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>中间可能下载 python 第三方库出现问题，需要改变成国内源，自己百度，还有文件编译过程中用的并不是系统的 python 环境，可能会出现这样的错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Command &quot;python setup.py egg_info&quot; failed with error code 1 in /tmp/pip-build-NTkCKL/hpfeeds-logger/</div></pre></td></tr></table></figure></p>
+<p>这时候在网上搜到的解决方案都是升级，但是你要注意，不是升级系统本身的 pip，而是 mhn 系统需要的 pip 环境变量，切换到 /opt/mhn/env/bin 操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo ./python -m pip install --upgrade --force pip</div><div class="line">sudo ./pip install setuptools==33.1.1</div></pre></td></tr></table></figure></p>
+<p>以上都是国内安装出现的一系列问题，但是如果在 VPS 上进行一键安装，基本都没有出现问题，我在安装单个蜜罐的时候处出现一个问题，后面会提出来<br>安装成功之后，出现配置的界面，基本没啥问题，看下成功的运行状态<br><img src="http://oc1v0t69e.bkt.clouddn.com/%E9%80%89%E5%8C%BA_006.png" alt="three" title="mhn_status"><br>此时 nginx 服务也是自动安装开启的。直接可以访问 web 界面,如果在安装 ELk 功能之后，对于分析人员更为方便。<br>国内安装建议采用代理方式安装<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install proxychains</div><div class="line">vim /etc/proxychains.conf</div><div class="line">socks5 127.0.0.1 xxxx</div><div class="line">proxychains ./install.sh</div></pre></td></tr></table></figure></p>
+<h2 id="三、蜜罐介绍"><a href="#三、蜜罐介绍" class="headerlink" title="三、蜜罐介绍"></a>三、蜜罐介绍</h2><ul>
+<li><p>3.1 建议蜜罐组合（防止冲突）</p>
+<ul>
+<li>Dionaea + kippo + snort + p0f</li>
+<li>wordpot + kippo + snort + p0f</li>
+<li>Glastopf + kippo + snort + p0f</li>
+<li>shockpot + kippo + snort + p0f</li>
+</ul>
+</li>
+<li><p>3.2 蜜罐类型</p>
+<ul>
+<li><p>80 端口</p>
+<ul>
+<li><a href="https://github.com/gbrindisi/wordpot" target="_blank" rel="external">wordpot</a><br>Wordpress 蜜罐，搭建 wordpress 网站运行在80端口。蜜罐专门检测对 wordpress 插件等安装配置的探测行为，如 wpscan 会被记录</li>
+<li><a href="https://github.com/mushorg/glastopf" target="_blank" rel="external">glastopf</a><br>Glastopf 工作流程你可以参考这篇<a href="http://www.2cto.com/article/201302/189433.html" target="_blank" rel="external">文章</a>,官方文档可以参考<a href="https://www.honeynet.org/sites/default/files/files/KYT-Glastopf-Final_v1.pdf" target="_blank" rel="external">这里</a>。属于低交互的 Web 蜜罐（80端口），它模拟了很多漏洞，特别是远程文件包含漏洞，可以捕获到攻击插入的文件。他可以将最新漏洞关键字记录下来，并添加到 Dorklist 中，实现 Dorklist 的动态更新，使得 Glastopf 能够对最新的 Web 攻击数据进行记录。它下载的文件，我们能够看到它们的 md5 值，这些文件都保存在<code>/opt/glastopf/data</code>中，配置文件是<code>/opt/glastopf/glastopf.cfg</code>，日志文件在<code>/opt/glastopf/log/glastopf.log</code></li>
+<li><a href="https://github.com/GovCERT-CZ/shockpot" target="_blank" rel="external">shockpot</a><br>Shockpot 是一个 web 蜜罐，在 80 端口上监听，用来模拟破壳漏洞, CVE-2014-6271,（中文介绍）破壳漏洞是一个影响很广泛的漏洞，影响 Mac OsX, Linux 和 Unix，这个漏洞产生在GNU Bash(shell)上，允许远程命令执行，虽然已经出现了补丁，但不是所有的机器都有更新。使用这个蜜罐，可以用来捕获这个漏洞的利用代码</li>
+</ul>
+</li>
+<li><p>22 端口</p>
+<ul>
+<li><p><a href="https://github.com/desaster/kippo" target="_blank" rel="external">kippo</a><br>kippo 是一个低交互式的 ssh 蜜罐。模拟了 ssh 服务，并运行在 22 端口。会记录攻击者的 ssh 登录行为，以及下载攻击者在模拟 ssh 中下载的文件。</p>
+<pre><code>模拟为 SSH 网络服务进程, 记录每次 SSH 口令暴力破解所尝试使用的用户名与口令
+并在口令猜测成功之后为攻击者提供模拟的 shell 执行环境
+对攻击源 IP 地址、使用的 SSH 客户端类型、输入的控制命令以及下载的攻击工具文件进行捕获与记录.
+</code></pre></li>
+<li>cowrie<br>类似于 kippo，它是一个具有中等交互的SSH蜜罐，安装在 Linux 中，它可以获取攻击者用于暴力破解的字典、输入的命令以及上传或下载的恶意文件。攻击者在上传恶意文件后，执行恶意文件的操作均会失败，所以对蜜罐本身来说比较安全。</li>
+</ul>
+</li>
+<li><p>多端口</p>
+<ul>
+<li>dionaea（捕蝇草）<br>低交互常规端口暴露蜜罐，你可以看到<br><img src="http://oc1v0t69e.bkt.clouddn.com/dionaea_port.png" alt="dionaea_port" title="dionaea_port"><br>提供的服务<br><img src="http://oc1v0t69e.bkt.clouddn.com/dionaea_service.png" alt="dionaea_service" title="dionaea_service"><br>nmap 扫描一下<br><img src="http://oc1v0t69e.bkt.clouddn.com/dionaea_nmap.png" alt="dionaea_nmap" title="dionaea_nmap"><br>端口 banner 全都出来了，明显看到蜜罐，隐藏这个可以参考这边<a href="https://www.securityartwork.es/2014/06/05/avoiding-dionaea-service-identification/?lang=en" target="_blank" rel="external">博文</a></li>
+</ul>
+</li>
+<li><p>可随配蜜罐</p>
+<ul>
+<li><p>p0f<br>p0f 是一个被动的系统指纹识别工具，它利用SYN数据包实现操作系统被动检测技术，能够正确地识别目标系统类型。P0f 默认使用eth0；p0f 没有去新建新的进程来实现网络监听；p0f的日志存储在<code>/var/log/p0f.out</code>，还有很重要的一点，p0f把攻击的信息保存在MHN服务的 mongodb 中，其他的一些信息，如操作系统类型等信息没有展现出来。p0f 信息包括有：</p>
+<pre><code>操作系统类型；
+端口；
+是否运行于防火墙之后；
+是否运行于NAT模式；
+是否运行于负载均衡模式；
+远程系统已启动时间；
+远程系统的DSL和ISP信息等。
+</code></pre></li>
+<li>snort<br>Snort是像Suricata一样的IDS/IPS，和Suricata使用类似的规则，同时工作方式也很像，通过crontab.daily来更新规则库，不会有其他用来监听连接的服务。日志在/var/log/snort/alert目录下。Snort的目的是帮助我们识别更多攻击者的攻击信息。因此可与其他蜜罐结合使用。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、Questions"><a href="#四、Questions" class="headerlink" title="四、Questions"></a>四、Questions</h2><ol>
+<li><p>4.1 supervisorctlv 统一管理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">supervisorctlv status</div><div class="line">#列出所有进程的状态</div><div class="line">supervisorctl　restart [process|all]</div><div class="line">#重启单个或者全部进程</div><div class="line">supervisorctl start [process|all]</div><div class="line">#开始单个进程或者全部进程</div><div class="line">supervisorctl stop [process|all]</div><div class="line">#停止单个进程或者全部进程</div><div class="line">supervisorctl update</div><div class="line"># 更新当前进程</div></pre></td></tr></table></figure>
+</li>
+<li><p>4.2 ELK 相关问题<br>安装完之后，elasticsearch 并不在 supervisorctlv 管理中，它是独立的，启动目录在系统启动项里，配置文件在<code>/etc/elasticserch/elasticserch.yml</code>中，必须改下相关主机、端口才能让其他机器访问，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">network.host: 0.0.0.0 #冒号之后一定要有空格</div><div class="line">http.port: 9200</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>head 插件 必须安装，目前是 elasticsearch 版本较低，插件很好安装，高版本之后，我当时安装那是一个坑啊，爬都爬不出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /usr/share/elasticsearch/bin/</div><div class="line">sudo ./plugin -install mobz/elasticsearch-head/1.x</div></pre></td></tr></table></figure></p>
+<p>如果碰到在<code>supervisorctlv status</code>看到<code>logstash FATAL</code>，你需要查看相关日志，记住日志是你最好的朋友 <code>vim /var/log/mhn/logstash.log</code>,我的当时出了这样的问题<code>No SINCEDB_DIR or HOME environment variable set</code>,查询这篇<a href="http://blog.csdn.net/jackghq/article/details/56286130" target="_blank" rel="external">博客</a>,大神说的非常好，以下解决之道<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">find / -name &apos;*.sincedb*&apos; 定位</div><div class="line">vim /opt/logstash/mhn.conf</div><div class="line">#在 input 中添加即在 path 和 start_position 之间加一个 sincedb_path</div><div class="line">sincedb_path =&gt; &quot;你刚才 find 路径&quot;</div><div class="line">#重启 logstash</div><div class="line">supervisorctl start logstash</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/honeypot/" rel="tag"># honeypot</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/02/ip_locate/" rel="next" title="一个简单的 python 定位脚本">
+                <i class="fa fa-chevron-left"></i> 一个简单的 python 定位脚本
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="vcomments"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oc1v0t69e.bkt.clouddn.com/kk.jpg"
+               alt="virusec00" />
+          <p class="site-author-name" itemprop="name">virusec00</p>
+           
+              <p class="site-description motion-element" itemprop="description">己所不欲，勿施于人</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/ || archive">
+            
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sharpsec" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:hxpsec@gmail.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                    
+                      E-Mail
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MHN-学习笔记"><span class="nav-number">1.</span> <span class="nav-text">MHN 学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、蜜罐概述"><span class="nav-number">1.1.</span> <span class="nav-text">一、蜜罐概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、MHN-安装"><span class="nav-number">1.2.</span> <span class="nav-text">二、MHN 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、蜜罐介绍"><span class="nav-number">1.3.</span> <span class="nav-text">三、蜜罐介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、Questions"><span class="nav-number">1.4.</span> <span class="nav-text">四、Questions</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">virusec00</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">
+      
+    </span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine@1.1.4/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+    new Valine({
+        av: AV,
+        el: '#vcomments' ,
+        verify: false,
+        notify: false,
+        app_id: 'g25qlc1F46STqjJOEylUG0JU-gzGzoHsz',
+        app_key: 'ChcXBhvKXQ3P9wFnJb8NvdAe',
+        placeholder: 'Comment input placeholder'
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
