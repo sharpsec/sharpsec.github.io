@@ -116,7 +116,7 @@ DNS 隧道原理DNS 隧道简单来说就是利用 dns 标准协议包装个人�
 <meta property="og:image" content="http://i.imgur.com/9w92HtS.png">
 <meta property="og:image" content="http://i.imgur.com/S38bCnl.png">
 <meta property="og:image" content="http://i.imgur.com/29hcFEJ.png">
-<meta property="og:updated_time" content="2017-08-30T07:45:56.000Z">
+<meta property="og:updated_time" content="2017-08-30T08:01:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dnscat2 小试">
 <meta name="twitter:description" content="dnscat2 小试环境准备123Server: Kali2.0 192.168.174.140Client: Kali2.0 192.168.174.141DNS server: Windows Server2003 192.168.174.135
@@ -334,7 +334,7 @@ DNS 隧道原理DNS 隧道简单来说就是利用 dns 标准协议包装个人�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T15:45:56+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T16:01:43+08:00">
                 2017-08-30
               </time>
             
@@ -428,7 +428,7 @@ DNS 隧道原理DNS 隧道简单来说就是利用 dns 标准协议包装个人�
         <h1 id="dnscat2-小试"><a href="#dnscat2-小试" class="headerlink" title="dnscat2 小试"></a>dnscat2 小试</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Server: Kali2.0 192.168.174.140</div><div class="line">Client: Kali2.0 192.168.174.141</div><div class="line">DNS server: Windows Server2003 192.168.174.135</div></pre></td></tr></table></figure>
 <h2 id="DNS-隧道原理"><a href="#DNS-隧道原理" class="headerlink" title="DNS 隧道原理"></a>DNS 隧道原理</h2><p>DNS 隧道简单来说就是利用 dns 标准协议包装个人的私有协议，以达到绕过防火墙的作用；</p>
 <h2 id="实验拓扑图"><a href="#实验拓扑图" class="headerlink" title="实验拓扑图"></a>实验拓扑图</h2><p>本次试验选了开源的 Dnscat2 工具，可以通过<a href="https://github.com/iagox86/dnscat2" target="_blank" rel="external">这里</a>下载它，工具的拓扑图如下；</p>
-<p><img src="http://i.imgur.com/ZUJGOzm.png" alt=""></p>
+<p><img src="http://i.imgur.com/ZUJGOzm.png" alt=""><br><a id="more"></a></p>
 <h2 id="安装-dnscat2"><a href="#安装-dnscat2" class="headerlink" title="安装 dnscat2"></a>安装 dnscat2</h2><p>Server：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/iagox86/dnscat2.git </div><div class="line">cd dnscat2/server</div><div class="line">bundle install</div></pre></td></tr></table></figure></p>
 <p>Client：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd dnscat2/client</div><div class="line">make</div></pre></td></tr></table></figure></p>
 <h2 id="搭建-dnsserver"><a href="#搭建-dnsserver" class="headerlink" title="搭建 dnsserver"></a>搭建 dnsserver</h2><ul>
