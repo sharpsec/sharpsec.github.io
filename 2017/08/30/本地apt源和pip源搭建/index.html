@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="定位,python," />
+  <meta name="keywords" content="apt-get,pip," />
 
 
 
@@ -95,16 +95,31 @@
 
 
 
-<meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940#!/usr/bin/env python# -*- coding: utf-8 -*-# @Author: sharpsec# @Date:   2016-08-30 16:22:31# @Last Modified by:   sharpsec# @La">
+<meta name="description" content="本地私有化 apt 源和 pip 源搭建一、apt 源搭建
+1.1 安装 apt-mirror
+1apt-get install apt-mirror
+
+1.2 修改 apt-mirror 配置文件 vim /etc/apt/mirror.list
+1234567891011121314151617181920212223242526272829############# config #####">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一个简单的 python 定位脚本">
-<meta property="og:url" content="http://yoursite.com/2016/09/02/ip_locate/index.html">
+<meta property="og:title" content="私有化 apt 和 pip">
+<meta property="og:url" content="http://yoursite.com/2017/08/30/本地apt源和pip源搭建/index.html">
 <meta property="og:site_name" content="吾辈岂是蓬蒿人">
-<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940#!/usr/bin/env python# -*- coding: utf-8 -*-# @Author: sharpsec# @Date:   2016-08-30 16:22:31# @Last Modified by:   sharpsec# @La">
-<meta property="og:updated_time" content="2017-08-30T02:44:41.000Z">
+<meta property="og:description" content="本地私有化 apt 源和 pip 源搭建一、apt 源搭建
+1.1 安装 apt-mirror
+1apt-get install apt-mirror
+
+1.2 修改 apt-mirror 配置文件 vim /etc/apt/mirror.list
+1234567891011121314151617181920212223242526272829############# config #####">
+<meta property="og:updated_time" content="2017-08-30T05:04:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个简单的 python 定位脚本">
-<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940#!/usr/bin/env python# -*- coding: utf-8 -*-# @Author: sharpsec# @Date:   2016-08-30 16:22:31# @Last Modified by:   sharpsec# @La">
+<meta name="twitter:title" content="私有化 apt 和 pip">
+<meta name="twitter:description" content="本地私有化 apt 源和 pip 源搭建一、apt 源搭建
+1.1 安装 apt-mirror
+1apt-get install apt-mirror
+
+1.2 修改 apt-mirror 配置文件 vim /etc/apt/mirror.list
+1234567891011121314151617181920212223242526272829############# config #####">
 
 
 
@@ -134,13 +149,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/02/ip_locate/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/30/本地apt源和pip源搭建/"/>
 
 
 
 
 
-  <title>一个简单的 python 定位脚本 | 吾辈岂是蓬蒿人</title>
+  <title>私有化 apt 和 pip | 吾辈岂是蓬蒿人</title>
   
 
 
@@ -287,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/02/ip_locate/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/30/本地apt源和pip源搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="virusec00">
@@ -304,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">一个简单的 python 定位脚本</h1>
+          <h1 class="post-title" itemprop="name headline">私有化 apt 和 pip</h1>
         
 
         <div class="post-meta">
@@ -316,8 +331,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-02T11:22:08+08:00">
-                2016-09-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T13:04:07+08:00">
+                2017-08-30
               </time>
             
 
@@ -339,8 +354,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python-demo/" itemprop="url" rel="index">
-                    <span itemprop="name">python demo</span>
+                  <a href="/categories/Linux-杂项/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux 杂项</span>
                   </a>
                 </span>
 
@@ -407,7 +422,50 @@
       
 
       
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="comment"># @Author: sharpsec</span></div><div class="line"><span class="comment"># @Date:   2016-08-30 16:22:31</span></div><div class="line"><span class="comment"># @Last Modified by:   sharpsec</span></div><div class="line"><span class="comment"># @Last Modified time: 2016-09-04 23:34:16</span></div><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line"></div><div class="line">url = <span class="string">'http://ip.zishuo.net/'</span></div><div class="line"><span class="comment">#url = 'http://ip.zishuo.net/?ip=120.27.54.129'</span></div><div class="line">headers = &#123;</div><div class="line">    <span class="string">'Host'</span>: <span class="string">'ip.zishuo.net'</span>,</div><div class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; rv:31.0) Gecko/20100101 Firefox/31.0'</span>,</div><div class="line">    <span class="string">'Accept'</span>: <span class="string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span>,</div><div class="line">    <span class="string">'Accept-Language'</span>: <span class="string">'en-us,en;q=0.5'</span>,</div><div class="line">    <span class="string">'Accept-Encoding'</span>: <span class="string">'gzip, deflate'</span>,</div><div class="line">    <span class="string">'Upgrade-Insecure-Requests'</span>: <span class="string">'1'</span>,</div><div class="line">    <span class="string">'Connection'</span>: <span class="string">'keep-alive'</span></div><div class="line">            &#125;</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    <span class="keyword">if</span> len(sys.argv) &lt; <span class="number">3</span> :</div><div class="line">        print(<span class="string">"Usage python ip_locate.py -ip ip_address"</span>)</div><div class="line">        exit(<span class="number">1</span>)</div><div class="line">    <span class="keyword">elif</span> len(sys.argv) == <span class="number">3</span>:</div><div class="line">        <span class="keyword">if</span> sys.argv[<span class="number">1</span>] == <span class="string">"-ip"</span>:</div><div class="line">            ip_address = sys.argv[<span class="number">2</span>]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            print(<span class="string">"Usage python ip_locate.py -ip ip_address"</span>)</div><div class="line">            exit(<span class="number">1</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">"Usage python ip_locate.py -ip ip_address\n"</span>)</div><div class="line">        exit(<span class="number">1</span>)</div><div class="line">    res = url + <span class="string">'?ip='</span> + ip_address</div><div class="line">    <span class="keyword">print</span> res</div><div class="line">    r = requests.get(res, headers=headers, timeout = <span class="number">10</span>)</div><div class="line">    <span class="keyword">print</span> r.content</div><div class="line"><span class="keyword">except</span> Exception,e:</div><div class="line">    <span class="keyword">print</span> e</div></pre></td></tr></table></figure>
+        <h1 id="本地私有化-apt-源和-pip-源搭建"><a href="#本地私有化-apt-源和-pip-源搭建" class="headerlink" title="本地私有化 apt 源和 pip 源搭建"></a>本地私有化 apt 源和 pip 源搭建</h1><h2 id="一、apt-源搭建"><a href="#一、apt-源搭建" class="headerlink" title="一、apt 源搭建"></a>一、apt 源搭建</h2><ul>
+<li><p>1.1 安装 apt-mirror</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install apt-mirror</div></pre></td></tr></table></figure>
+</li>
+<li><p>1.2 修改 apt-mirror 配置文件 <code>vim /etc/apt/mirror.list</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">############# config ##################</div><div class="line"># 以下注释的内容都是默认配置，如果需要自定义，取消注释修改即可</div><div class="line">set base_path /var/spool/apt-mirror</div><div class="line">#</div><div class="line"># 镜像文件下载地址</div><div class="line"># set mirror_path $base_path/mirror</div><div class="line"># 临时索引下载文件目录，也就是存放软件仓库的dists目录下的文件（默认即可）</div><div class="line"># set skel_path $base_path/skel</div><div class="line"># 配置日志（默认即可）</div><div class="line"># set var_path $base_path/var</div><div class="line"># clean脚本位置</div><div class="line"># set cleanscript $var_path/clean.sh</div><div class="line"># 架构配置，i386/amd64，默认的话会下载跟本机相同的架构的源</div><div class="line">set defaultarch amd64</div><div class="line"># set postmirror_script $var_path/postmirror.sh</div><div class="line"># set run_postmirror 0</div><div class="line"># 下载线程数</div><div class="line">set nthreads 20</div><div class="line">set _tilde 0</div><div class="line">#</div><div class="line">############# end config ##############</div><div class="line"># Ali yun（这里没有添加deb-src的源）</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse</div><div class="line"> </div><div class="line">clean http://mirrors.aliyun.com/ubuntu</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>1.3 开始同步<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt--miiror</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>同步的镜像文件目录为 <code>/var/spool/apt-mirror/mirror/mirrors.aliyun.com/ubuntu/</code></p>
+<ul>
+<li><p>1.4 安装 Apache2</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install apache2</div><div class="line">service apache2 start</div></pre></td></tr></table></figure>
+</li>
+<li><p>1.5 生成软连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln -s /var/spool/apt-mirror/mirror/mirrors.aliyun.com/ubuntu /var/www/html/ubuntu</div></pre></td></tr></table></figure>
+</li>
+<li><p>1.6 编辑 source.list</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deb [arch=amd64] http://[host]:[port]/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb [arch=amd64] http://[host]:[port]/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line">deb [arch=amd64] http://[host]:[port]/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb [arch=amd64] http://[host]:[port]/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line">deb [arch=amd64] http://[host]:[port]/ubuntu/ trusty-backports main restricted universe multiverse</div></pre></td></tr></table></figure>
+</li>
+<li><p>1.7 更新 apt-get update</p>
+</li>
+</ul>
+<h2 id="二、pip-源搭建"><a href="#二、pip-源搭建" class="headerlink" title="二、pip 源搭建"></a>二、pip 源搭建</h2><ul>
+<li>2.1 安装 pypimirror,这里会有很大的坑<br>先 pip 安装，<code>pip install z3c.pypimirror</code>, 如果成功请 pass，如果 BeautifulSoup 版本报错，请先源码安装，官网<a href="https://pypi.python.org/pypi/z3c.pypimirror" target="_blank" rel="external">下载</a><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tar -zxvf xxxx.tar.gz</div><div class="line">python steup.py install</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>可能 BeautifulSoup 会再报错，这是修改 <code>vim /usr/local/lib/python2.7/dist-packages/z3c.pypimirror-1.0.16-py2.7.egg/EGG-INFO/requires.txt</code>,去掉版本号，此时不能再用源码安装，它会覆盖这个文件，再执行 <code>pip install z3c.pypimirror</code> 安装成功</p>
+<ul>
+<li><p>2.2 生成 pypimirror.cfg 配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">[DEFAULT]</div><div class="line"># 镜像文件的本地存放路径</div><div class="line">mirror_file_path = /media/root/work2/pypi</div><div class="line"> </div><div class="line"># 远程镜像的url</div><div class="line">base_url =  http://pypi.douban.com/simple</div><div class="line"> </div><div class="line"># 日志文件</div><div class="line">log_filename = /var/log/pypi-mirror.log</div><div class="line"> </div><div class="line"># 防止重复运行的锁文件</div><div class="line">lock_file_name = /tmp/pypi-mirror.lock</div><div class="line"> </div><div class="line"># days to fetch in past on update</div><div class="line">fetch_since_days = 1</div><div class="line"> </div><div class="line"># 需要进行镜像拷贝的文件类型，不在列表中的则不进行拷贝</div><div class="line">filename_matches =</div><div class="line">    *.zip</div><div class="line">    *.tgz</div><div class="line">    *.egg</div><div class="line">    *.tar.gz</div><div class="line">    *.tar.bz2</div><div class="line"> </div><div class="line"># 需要进行镜像拷贝的文件名称，不在列表中的则不进行拷贝</div><div class="line"># 默认拷贝全部，上面已经删选了类型</div><div class="line">package_matches =</div><div class="line">    *</div><div class="line"> </div><div class="line"># 删除本地有而服务器上没有的包</div><div class="line"># 默认是True，会进行删除的，此处我调整为False</div><div class="line">cleanup = False</div><div class="line"> </div><div class="line"># 创建索引文件</div><div class="line">create_indexes = True</div><div class="line"> </div><div class="line"># 显示相信信息</div><div class="line">verbose = True</div></pre></td></tr></table></figure>
+</li>
+<li><p>2.3 初始化，生成索引<code>pypimirror -c -v -I pypimirror.cfg</code>，这里会可能报这样的错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xmlrpclib.ProtocolError: &lt;ProtocolError for pypi.python.org/pypi: 403 Must access using HTTPS instead of HTTP&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>只需要在<code>/usr/local/lib/python2.7/dist-packages/z3c.pypimirror-1.0.16-py2.7.egg/z3c/pypimirror/mirror.py</code>，<code>http://pypi.python.org</code>换成 https，好像是三处</p>
+<ul>
+<li>2.4 更新 <code>pypimirror -c -v -i -U pypimirror.cfg</code></li>
+</ul>
 
       
     </div>
@@ -425,9 +483,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/定位/" rel="tag"># 定位</a>
+            <a href="/tags/apt-get/" rel="tag"># apt-get</a>
           
-            <a href="/tags/python/" rel="tag"># python</a>
+            <a href="/tags/pip/" rel="tag"># pip</a>
           
         </div>
       
@@ -440,15 +498,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/08/30/MHN_学习笔记/" rel="next" title="MHN 学习笔记">
+                <i class="fa fa-chevron-left"></i> MHN 学习笔记
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/30/MHN_学习笔记/" rel="prev" title="MHN 学习笔记">
-                MHN 学习笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -502,8 +560,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://oc1v0t69e.bkt.clouddn.com/kk.jpg"
@@ -591,6 +658,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#本地私有化-apt-源和-pip-源搭建"><span class="nav-number">1.</span> <span class="nav-text">本地私有化 apt 源和 pip 源搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、apt-源搭建"><span class="nav-number">1.1.</span> <span class="nav-text">一、apt 源搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、pip-源搭建"><span class="nav-number">1.2.</span> <span class="nav-text">二、pip 源搭建</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
